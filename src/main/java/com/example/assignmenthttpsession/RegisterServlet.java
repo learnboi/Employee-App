@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
                 response.sendRedirect("login.jsp");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
         }
     }
 }
