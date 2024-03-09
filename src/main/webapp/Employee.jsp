@@ -6,7 +6,7 @@
   Time: 11:23 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Employee</title>
@@ -18,7 +18,7 @@
     <th>Name</th>
     <th>City</th>
     <%
-        List<Employee> list = (List<Employee>) request.getAttribute("employeeList");
+        List<Employee> list = (List<Employee>) session.getAttribute("employeeList");
         for(Employee e : list){
     %>
     <tr>
@@ -30,5 +30,9 @@
     }
 %>
 </table>
+<br>
+<a href="logout"><button>Logout</button></a>
+<a href="index.jsp"><button>Back</button></a>
+<a href="link.jsp"><button>Homepage</button></a>
 </body>
 </html>

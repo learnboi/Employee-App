@@ -20,9 +20,9 @@ public class LoginServlet extends HttpServlet {
             Employeedata ed = new Employeedata();
             try {
                 List<Employee> employeeList = ed.fetchEmployeeData();
-                request.setAttribute("employeeList",employeeList);
-                RequestDispatcher rd =request.getRequestDispatcher("Employee.jsp");
-                rd.forward(request,response);
+                HttpSession session = request.getSession();
+                session.setAttribute("employeeList",employeeList);
+                request.getRequestDispatcher("Employee.jsp").include(request,response);
             } catch (Exception e) {
                 pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
             }
@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
                     if (password.equals(storedPassword)) {
                         HttpSession session = request.getSession();
                         session.setAttribute("username", username);
-                        request.getRequestDispatcher("profile").include(request, response);
+                        request.getRequestDispatcher("userdata").include(request, response);
                     } else {
                         pw.write("<h1>Ico");
                         request.getRequestDispatcher("incorrectpassword.jsp").include(request, response);
