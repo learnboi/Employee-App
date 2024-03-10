@@ -34,7 +34,7 @@
     <br>
     <input type="submit" value="Submit">
     <input type="reset" value="Reset">
-    <a href="index.jsp" style="border-style: solid; border-width: thin">Back</a>
+    <input type="button" value="Go back!" onclick="history.back()">
 </form>
 </body>
 </html>

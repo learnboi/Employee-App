@@ -7,7 +7,15 @@ public class Employee{
     private String city;
     private String email;
     private int age;
-    private long number;
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getEmail() {
         return email;
@@ -23,14 +31,6 @@ public class Employee{
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public long getNumber() {
-        return number;
-    }
-
-    public void setNumber(long number) {
-        this.number = number;
     }
 
     public String getId() {

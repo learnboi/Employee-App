@@ -2,6 +2,7 @@ package com.example.assignmenthttpsession;
 
 import java.io.*;
 import java.sql.*;
+import java.util.Properties;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -22,35 +23,27 @@ public class RegisterServlet extends HttpServlet {
         String id = request.getParameter("id");
         String city = request.getParameter("city");
 
-        String url = "jdbc:mysql://localhost:3306/login";
-        String user = "root";
-        String pass = "root";
+        Properties prop = new Properties();
+        FileInputStream fileInputStream = new FileInputStream("C:/Users/chait/IdeaProjects/AssignmentHTTPsession/src/main/resources/config.properties");
+        prop.load(fileInputStream);
+        String url = prop.getProperty("url");
+        String user = prop.getProperty("User");
+        String pass = prop.getProperty("Pass");
         try {
             Connection conn = DriverManager.getConnection(url, user, pass);
-            String loginDataQuery = "INSERT INTO logindata(username,password) values(?,?);";
-            PreparedStatement loginStatement = conn.prepareStatement(loginDataQuery);
-            loginStatement.setString(1, username);
-            loginStatement.setString(2, password);
-            int rowsAffectedLoginData = loginStatement.executeUpdate();
-
-            String userDataQuery = "INSERT INTO userdata(username,name,age,email,phone) values(?,?,?,?,?);";
-            PreparedStatement userDataStatement = conn.prepareStatement(userDataQuery);
-            userDataStatement.setString(1, username);
-            userDataStatement.setString(2, name);
-            userDataStatement.setString(3, age);
-            userDataStatement.setString(4, email);
-            userDataStatement.setString(5, phone);
-            int rowsAffectedUserData = userDataStatement.executeUpdate();
-
-
-            String employeeDataQuery = "INSERT INTO employeedata(id,name,city) values(?,?,?);";
+            String employeeDataQuery = "INSERT INTO employeedata(id,name,city,age,email,phone,username,password) values(?,?,?,?,?,?,?,?);";
             PreparedStatement employeeDataStatement = conn.prepareStatement(employeeDataQuery);
             employeeDataStatement.setString(1, id);
-            employeeDataStatement.setString(2,username);
+            employeeDataStatement.setString(2, name);
             employeeDataStatement.setString(3,city);
+            employeeDataStatement.setString(4, age);
+            employeeDataStatement.setString(5, email);
+            employeeDataStatement.setString(6, phone);
+            employeeDataStatement.setString(7, username);
+            employeeDataStatement.setString(8, password);
             int rowsAffectedEmployeeData = employeeDataStatement.executeUpdate();
 
-            if (rowsAffectedLoginData > 0 && rowsAffectedUserData>0 && rowsAffectedEmployeeData>0){
+            if (rowsAffectedEmployeeData>0){
                 request.setAttribute("username",username);
                 request.setAttribute("password",password);
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

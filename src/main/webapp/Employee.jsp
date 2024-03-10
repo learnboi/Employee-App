@@ -17,6 +17,9 @@
     <th>Id</th>
     <th>Name</th>
     <th>City</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Phone</th>
     <%
         List<Employee> list = (List<Employee>) session.getAttribute("employeeList");
         for(Employee e : list){
@@ -25,6 +28,9 @@
         <td><%= e.getId() %></td>
         <td><%= e.getName() %></td>
         <td><%= e.getCity() %></td>
+        <td><%= e.getEmail() %></td>
+        <td><%= e.getAge() %></td>
+        <td><%= e.getPhone() %></td>
     </tr>
 <%
     }

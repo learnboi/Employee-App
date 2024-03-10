@@ -8,11 +8,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 
 @WebServlet("/userdata")
@@ -23,30 +25,30 @@ public class Userdata extends HttpServlet {
         try {
                 HttpSession session = request.getSession(false);
                 String storedUsername = (String) session.getAttribute("username");
-                String url = "jdbc:mysql://localhost:3306/login";
-                String user = "root";
-                String pass = "root";
+                Properties prop = new Properties();
+                FileInputStream fileInputStream = new FileInputStream("C:/Users/chait/IdeaProjects/AssignmentHTTPsession/src/main/resources/config.properties");
+                prop.load(fileInputStream);
+                String url = prop.getProperty("url");
+                String user = prop.getProperty("User");
+                String pass = prop.getProperty("Pass");
                 Connection conn = DriverManager.getConnection(url, user, pass);
                 Statement statement = conn.createStatement();
-                String Sql = "SELECT * FROM userdata WHERE username='" + storedUsername + "'";
+                String Sql = "SELECT * FROM employeedata WHERE username='" + storedUsername + "'";
                 ResultSet resultSet = statement.executeQuery(Sql);
                 List<Employee> userlist = new ArrayList<>();
                 while (resultSet.next()) {
-                    String username = resultSet.getString("username");
-                    String name = resultSet.getString("name");
-                    int age = resultSet.getInt("age");
-                    String email = resultSet.getString("email");
-                    long phone = resultSet.getLong("phone");
-                    session.setAttribute("username",username);
-                    session.setAttribute("name",name);
-                    session.setAttribute("age",age);
-                    session.setAttribute("email",email);
-                    session.setAttribute("phone",phone);
+                    session.setAttribute("username",resultSet.getString("username"));
+                    session.setAttribute("name",resultSet.getString("name"));
+                    session.setAttribute("age",resultSet.getInt("age"));
+                    session.setAttribute("email",resultSet.getString("email"));
+                    session.setAttribute("phone",resultSet.getString("phone"));
+                    session.setAttribute("city",resultSet.getString("city"));
+                    session.setAttribute("id",resultSet.getString("id"));
                     RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
                     rd.forward(request,response);
                 }
             }catch (Exception e){
-                pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
+                pw.write("<h1>" + e.fillInStackTrace() + "</h1>");
             }
     }
 

@@ -25,10 +25,26 @@
     </tr>
     <tr>
         <td>
+            Id
+        </td>
+        <td>
+            <%=session.getAttribute("id")%>
+        </td>
+    </tr>
+    <tr>
+        <td>
             Age
         </td>
         <td>
             <%=session.getAttribute("age")%>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            City
+        </td>
+        <td>
+            <%=session.getAttribute("city")%>
         </td>
     </tr>
     <tr>

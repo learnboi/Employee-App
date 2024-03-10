@@ -125,9 +125,10 @@
         </tr>
     </table>
     <br>
+
     <input type="submit" value="Register">
     <input type="reset" value="Reset">&nbsp;
-    <a href="index.jsp" style="border-style: solid; border-width: thin">Back</a>
+    <input type="button" value="Go back!" onclick="history.back()">
 </form>
 </body>
 </html>

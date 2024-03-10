@@ -3,6 +3,7 @@ package com.example.assignmenthttpsession;
 import java.io.*;
 import java.sql.*;
 import java.util.List;
+import java.util.Properties;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -27,13 +28,15 @@ public class LoginServlet extends HttpServlet {
                 pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
             }
         }else {
-            String url = "jdbc:mysql://localhost:3306/login";
-            String user = "root";
-            String pass = "root";
-
+            Properties prop = new Properties();
+            FileInputStream fileInputStream = new FileInputStream("C:/Users/chait/IdeaProjects/AssignmentHTTPsession/src/main/resources/config.properties");
+            prop.load(fileInputStream);
+            String url = prop.getProperty("url");
+            String user = prop.getProperty("User");
+            String pass = prop.getProperty("Pass");
             try {
                 Connection conn = DriverManager.getConnection(url, user, pass);
-                String Sqlquery = "SELECT username,password FROM logindata where username = ?";
+                String Sqlquery = "SELECT username,password FROM employeedata where username = ?";
                 PreparedStatement statement = conn.prepareStatement(Sqlquery);
                 statement.setString(1, username);
                 ResultSet resultSet = statement.executeQuery();
@@ -44,10 +47,10 @@ public class LoginServlet extends HttpServlet {
                         session.setAttribute("username", username);
                         request.getRequestDispatcher("userdata").include(request, response);
                     } else {
-                        request.getRequestDispatcher("incorrect-password.jsp").include(request, response);
+                        pw.write("<h1>Incorrect Password</h1> <input type='button' value='Go Back!' onclick='history.back()'>");
                     }
                 } else {
-                    request.getRequestDispatcher("usernotfound.jsp").include(request, response);
+                    pw.write("<h1>User not Found</h1><a href='register.jsp'><button>Register here</button></a>&nbsp;<input type='button' value='Go Back!' onclick='history.back()'>");
                 }
             } catch (Exception e) {
                 pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
