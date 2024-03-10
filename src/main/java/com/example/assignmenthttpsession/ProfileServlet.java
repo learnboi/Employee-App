@@ -1,5 +1,6 @@
 package com.example.assignmenthttpsession;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,11 +18,13 @@ public class ProfileServlet extends HttpServlet {
         PrintWriter out=response.getWriter();
         HttpSession session=request.getSession(false);
         if(session!=null){
-            String name=(String)session.getAttribute("username");
-            out.print("<h1>Hello, "+name+" Welcome to Profile</h1>");
-            out.print("<a href='link.jsp'><button>Homepage</button><a>&nbsp;");
-            out.print("<a href='logout'><button>Logout</button></a>");
-            request.getRequestDispatcher("link.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
+            rd.forward(request,response);
+//            String username=(String)session.getAttribute("username");
+//            out.print("<h1>Hello, "+username+" Welcome to Profile</h1>");
+//            out.print("<a href='link.jsp'><button>Homepage</button><a>&nbsp;");
+//            out.print("<a href='logout'><button>Logout</button></a>");
+//            request.getRequestDispatcher("link.jsp");
         }
         else{
             out.print("<h1>Please login first</h1>");

@@ -15,7 +15,7 @@ public class Employeedata {
         ResultSet resultSet = statement.executeQuery(Sql);
         List<Employee> employeelist = new ArrayList<>();
         while (resultSet.next()){
-            int id = resultSet.getInt("id");
+            String id = resultSet.getString("id");
             String name = resultSet.getString("name");
             String city = resultSet.getString("city");
             Employee e = new Employee();

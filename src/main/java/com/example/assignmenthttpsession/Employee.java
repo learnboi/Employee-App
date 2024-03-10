@@ -1,15 +1,43 @@
 package com.example.assignmenthttpsession;
 
 public class Employee{
-    private int id;
+
+    private String id;
     private String name;
     private String city;
+    private String email;
+    private int age;
+    private long number;
 
-    public int getId() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public long getNumber() {
+        return number;
+    }
+
+    public void setNumber(long number) {
+        this.number = number;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

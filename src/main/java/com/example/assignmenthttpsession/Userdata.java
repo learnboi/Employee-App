@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet("/userdata")
 public class Userdata extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw =response.getWriter();
         try {
                 HttpSession session = request.getSession(false);

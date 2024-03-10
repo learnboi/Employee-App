@@ -12,7 +12,45 @@
 </head>
 <body>
 
-<h1>Hello,<%=session.getAttribute("name")%> Welcome to Profile</h1>
+<h1>Hello,<%=session.getAttribute("username")%> Welcome to Profile</h1>
+<p>Find your details below</p>
+<table border="black">
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            <%=session.getAttribute("name")%>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Age
+        </td>
+        <td>
+            <%=session.getAttribute("age")%>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email
+        </td>
+        <td>
+            <%=session.getAttribute("email")%>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Phone
+        </td>
+        <td>
+            <%=session.getAttribute("phone")%>
+        </td>
+    </tr>
+</table>
+<br>
+<a href="link.jsp"><button>Homepage</button></a>
+<a href="logout"><button>Logout</button></a>
 
 </body>
 </html>

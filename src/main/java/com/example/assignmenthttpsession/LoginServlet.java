@@ -38,20 +38,19 @@ public class LoginServlet extends HttpServlet {
                 statement.setString(1, username);
                 ResultSet resultSet = statement.executeQuery();
                 if (resultSet.next()) {
-                    String storedPassword = resultSet.getString("Password");
+                    String storedPassword = resultSet.getString("password");
                     if (password.equals(storedPassword)) {
                         HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         request.getRequestDispatcher("userdata").include(request, response);
                     } else {
-                        pw.write("<h1>Ico");
-                        request.getRequestDispatcher("incorrectpassword.jsp").include(request, response);
+                        request.getRequestDispatcher("incorrect-password.jsp").include(request, response);
                     }
                 } else {
-                    request.getRequestDispatcher("/usernotfound.jsp").include(request, response);
+                    request.getRequestDispatcher("usernotfound.jsp").include(request, response);
                 }
             } catch (Exception e) {
-                System.out.println(e.getLocalizedMessage());
+                pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
             }
         }
     }
