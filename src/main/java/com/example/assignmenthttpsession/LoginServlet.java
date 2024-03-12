@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
         PrintWriter pw = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if(username.equals("admin") && password.equals("admin")){
+        if(username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
             Employeedata ed = new Employeedata();
             try {
                 List<Employee> employeeList = ed.fetchEmployeeData();
@@ -36,25 +36,29 @@ public class LoginServlet extends HttpServlet {
             String pass = prop.getProperty("Pass");
             try {
                 Connection conn = DriverManager.getConnection(url, user, pass);
-                String Sqlquery = "SELECT username,password FROM employeedata where username = ?";
+                String Sqlquery = "SELECT username, password FROM employeedata WHERE username = ?";
                 PreparedStatement statement = conn.prepareStatement(Sqlquery);
-                statement.setString(1, username);
+                statement.setString(1, username.toLowerCase());
+
                 ResultSet resultSet = statement.executeQuery();
+
                 if (resultSet.next()) {
                     String storedPassword = resultSet.getString("password");
-                    if (password.equals(storedPassword)) {
+                    if (password.toLowerCase().equals(storedPassword.toLowerCase())) {
                         HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         request.getRequestDispatcher("userdata").include(request, response);
                     } else {
-                        pw.write("<h1>Incorrect Password</h1> <input type='button' value='Go Back!' onclick='history.back()'>");
+                        request.getRequestDispatcher("IncorrectPassword.jsp").include(request, response);
                     }
                 } else {
-                    pw.write("<h1>User not Found</h1><a href='register.jsp'><button>Register here</button></a>&nbsp;<input type='button' value='Go Back!' onclick='history.back()'>");
+                    request.getRequestDispatcher("UsernotFound.jsp").include(request, response);
                 }
+                conn.close();
             } catch (Exception e) {
                 pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
             }
+
         }
     }
 }
