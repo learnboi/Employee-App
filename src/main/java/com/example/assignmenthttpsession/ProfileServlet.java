@@ -20,11 +20,6 @@ public class ProfileServlet extends HttpServlet {
         if(session!=null){
             RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
             rd.forward(request,response);
-//            String username=(String)session.getAttribute("username");
-//            out.print("<h1>Hello, "+username+" Welcome to Profile</h1>");
-//            out.print("<a href='link.jsp'><button>Homepage</button><a>&nbsp;");
-//            out.print("<a href='logout'><button>Logout</button></a>");
-//            request.getRequestDispatcher("link.jsp");
         }
         else{
             out.print("<h1>Please login first</h1>");

@@ -1,53 +1,36 @@
-
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+    response.setHeader("Expires", "0"); // Proxies
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Homepage</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #16a085, #3498db);
-            color: #000;
-            text-align: center;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #fff;
-            font-size: 48px;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        button {
-            padding: 15px 30px;
-            font-size: 18px;
-            margin: 10px;
-            cursor: pointer;
-            background-color: #2ecc71;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        button:hover {
-            background-color: #27ae60;
-            transform: scale(1.05);
-        }
-
-        a {
-            text-decoration: none;
-            color: #fff;
-        }
-    </style>
 </head>
 <body>
 <h1>Homepage</h1>
-<a href="login.jsp"><button>Login</button></a>
 <a href="logout"><button>Logout</button></a>
 <a href="profile"><button>Profile</button></a>
 </body>
 </html>
+
+<%--<%--%>
+<%--    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1--%>
+<%--    response.setHeader("Pragma", "no-cache"); // HTTP 1.0--%>
+<%--    response.setHeader("Expires", "0"); // Proxies--%>
+<%--    // Check if the session exists and if the user is logged in--%>
+<%--    if (session == null || session.getAttribute("username") == null) {--%>
+<%--        // If not logged in, redirect to usernotloggedin.jsp--%>
+<%--        response.sendRedirect("usernotloggedin.jsp");--%>
+<%--        return; // Stop further execution--%>
+<%--    }--%>
+<%--%>--%>
+<%--<script>--%>
+<%--    // Override the back button functionality--%>
+<%--    history.pushState(null, null, location.href);--%>
+<%--    window.onpopstate = function () {--%>
+<%--        history.go(1);--%>
+<%--        window.location.href = "usernotloggedin.jsp"; // Redirect to index.jsp--%>
+<%--    };--%>
+<%--</script>--%>
