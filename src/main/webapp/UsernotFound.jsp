@@ -7,6 +7,7 @@
 <html>
 <head>
     <title>Usernotfound</title>
+    <link rel="stylesheet" href="styles/usernotfound.css">
 </head>
 <body>
 <h1>User not found</h1>

@@ -12,6 +12,7 @@
             color: red;
         }
     </style>
+    <link rel="stylesheet" href="styles/register.css">
 </head>
 <body>
 <h1>Register Form</h1>
@@ -104,5 +105,20 @@
     <input type="reset" value="Reset">&nbsp;
     <input type="button" value="Go back!" onclick="history.back()">
 </form>
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var confirmPasswordInput = document.getElementById("confirmpassword");
+        var showPasswordCheckbox = document.getElementById("showPassword");
+
+        if (showPasswordCheckbox.checked) {
+            passwordInput.type = "text";
+            confirmPasswordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+            confirmPasswordInput.type = "password";
+        }
+    }
+</script>
 </body>
 </html>

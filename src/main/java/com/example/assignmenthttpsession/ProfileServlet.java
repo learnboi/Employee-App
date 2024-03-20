@@ -15,15 +15,16 @@ import java.io.PrintWriter;
 public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        PrintWriter out=response.getWriter();
+        PrintWriter pw=response.getWriter();
         HttpSession session=request.getSession(false);
         if(session!=null){
             RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
             rd.forward(request,response);
         }
         else{
-            out.print("<h1>Please login first</h1>");
+            response.sendRedirect("usernotloggedin.jsp");
+            return;
         }
-        out.close();
+        pw.close();
     }
 }

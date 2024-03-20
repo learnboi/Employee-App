@@ -7,6 +7,7 @@
 <html>
 <head>z
     <title>Incorrect Password</title>
+    <link rel="stylesheet" href="styles/">
 </head>
 <body>
 <h1>Incorrect Password</h1>

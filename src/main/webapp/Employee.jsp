@@ -2,6 +2,12 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0
     response.setHeader("Expires", "0"); // Proxies
+    // Check if the session exists and if the user is logged in
+    if (session == null || session.getAttribute("username") == null) {
+        // If not logged in, redirect to usernotloggedin.jsp
+        response.sendRedirect("usernotloggedin.jsp");
+        return; // Stop further execution
+    }
 %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.assignmenthttpsession.Employee" %>
@@ -15,6 +21,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <link rel="stylesheet" href="styles/Employee.css">
     <title>Employee</title>
 </head>
 <body>

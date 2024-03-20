@@ -1,12 +1,8 @@
-<%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-    response.setHeader("Expires", "0"); // Proxies
-%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>Homepage</title>
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
 <h1>Homepage</h1>

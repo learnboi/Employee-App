@@ -7,6 +7,7 @@
 <html>
 <head>
     <title>Login First</title>
+    <link rel="stylesheet" href="styles/usernotloggedin.css">
 </head>
 <body>
 <h1>You are not logged In.</h1>
