@@ -5,9 +5,9 @@
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>z
+<head>
     <title>Incorrect Password</title>
-    <link rel="stylesheet" href="styles/">
+    <link rel="stylesheet" href="styles/incorrectpassword.css">
 </head>
 <body>
 <h1>Incorrect Password</h1>

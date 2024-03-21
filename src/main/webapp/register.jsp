@@ -31,7 +31,7 @@
                 <label for="name">Name</label>
             </td>
             <td>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" required>
             </td>
         </tr>
         <tr>

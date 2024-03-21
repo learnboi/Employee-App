@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 
                 if (resultSet.next()) {
                     String storedPassword = resultSet.getString("password");
-                    if (password.toLowerCase().equals(storedPassword.toLowerCase())) {
+                    if (password.equals(storedPassword)) {
                         HttpSession session = request.getSession();
                         session.setAttribute("username", username);
                         request.getRequestDispatcher("userdata").include(request, response);
