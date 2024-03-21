@@ -11,13 +11,6 @@
 %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.assignmenthttpsession.Employee" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: chait
-  Date: 2024-03-08
-  Time: 11:23 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -51,7 +44,10 @@
     %>
 </table>
 <br>
+<%
+    session.setAttribute("username",session.getAttribute("username"));
+%>
 <a href="logout"><button>Logout</button></a>
-<a href="link.jsp"><button>Homepage</button></a>
+<a href="linkAdmin.jsp"><button>Homepage</button></a>
 </body>
 </html>

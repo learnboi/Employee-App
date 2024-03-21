@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
                 List<Employee> employeeList = ed.fetchEmployeeData();
                 HttpSession session = request.getSession();
                 session.setAttribute("employeeList",employeeList);
+                session.setAttribute("username",username);
                 request.getRequestDispatcher("Employee.jsp").include(request,response);
             } catch (Exception e) {
                 pw.write("<h1>" + e.getLocalizedMessage() + "</h1>");
